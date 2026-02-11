@@ -1,0 +1,22 @@
+name: Executar Alerta de Notas Semanal
+
+on:
+  schedule:
+    # Agendado para toda segunda-feira às 08:00 de Fortaleza (11:00 UTC)
+    - cron: '0 11 * * 1'
+  workflow_dispatch: # Permite que você rode o teste manualmente agora!
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar código do repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Executar Script de Alerta
+        run: python alerta_notas.py
