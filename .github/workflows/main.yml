@@ -20,3 +20,5 @@ jobs:
 
       - name: Executar Script de Alerta
         run: python alerta_notas.py
+        env:
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
